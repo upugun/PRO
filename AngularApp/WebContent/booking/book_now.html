@@ -1,0 +1,125 @@
+<div id="calendarModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<div class="modal-content">
+			<div class="modal-header bg-warning">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title text-center">Book Now</h4>
+			</div>
+			<div class="modal-body">
+				<form name="book_form" role="form">
+				<div class="form-group">
+					<input type="hidden" id="t_emp_id" class="form-control"
+						ng-model="booking.bid" value="{{booking.bid}}" placeholder="ID" />
+				</div>
+
+
+				<div class="form-group" onload="myFunction('demo');">
+					<label>Start Date:</label> <input type="date" id="d_startDate"
+						name="d_startDate" class="form-control"
+						ng-model="booking.startDate" value="{{booking.startDate}}"
+						placeholder="mm/dd/yyyy" />
+				</div>
+
+				<div class="form-group">
+
+					<label>Long Event </label> &nbsp<input type="checkbox"
+						id="Repeating_Event" name="Repeating_Event"
+						ng-model="booking.repeating" />
+				</div>
+
+				<div class="form-group" ng-show="booking.repeating">
+					<label>End Date </label> <input type="date" id="t_emp_id"
+						class="form-control" ng-model="booking.endDate"
+						value="{{booking.endDate}}" placeholder="mm/dd/yyyy" />
+				</div>
+
+				<div class="form-group">
+					<label for="t_name">Meeting Title</label> <input type="text"
+						id="t_name" class="form-control" ng-model="booking.title"
+						value="{{booking.title}}" placeholder="Meeting Title" required/>
+				</div>
+				<div class="form-group">
+					<label for="t_name">Remarks</label>
+					<textarea class="form-control" id="exampleTextarea" rows="4"
+						ng-model="booking.remarks" value="{{booking.remarks}}"
+						placeholder="Remarks"></textarea>
+				</div>
+
+				<label>Select time</label>
+
+				<div class="form-inline">
+					<div class="form-group">
+
+
+						<label for="cmb_start">From</label> <select class="form-control"
+							name="cmb_times" class="form-times " id="cmb_times"
+							ng-model="booking.startTime"
+							ng-options="detail as detail for detail in timeSlots" required>
+						</select>
+					</div>
+
+
+					<label for="cmb_start">To</label> <select class="form-control"
+						name="cmb_times" class="form-times " id="cmb_times"
+						ng-model="booking.endTime"
+						ng-options="detail as detail for detail in timeSlots" required>
+					</select>
+				</div>
+
+
+				<span ng-if="availableList.length > 0">
+					<div class="form-group">
+						<label for=foo style="display: block">Available Resources
+						</label>
+
+						<div class="form-group">
+							<i ng-repeat="resourceType in availableList"
+								class="{{resourceType.icon}} snf-padding" aria-hidden="true"
+								title="{{resourceType.resourceType}}"></i>
+						</div>
+					</div>
+				</span> <span ng-if="requestList.length > 0">
+					<div class="form-group">
+						<label for=foo style="display: block">Request Resources </label> <label
+							class="checkbox-inline" ng-repeat="reqObj in requestList"><input
+							type="checkbox" ng-model="reqObj.selectedStatus"
+							value="reqObj.selectedStatus"> <i class="{{reqObj.icon}}"
+							aria-hidden="true" title="{{reqObj.resourceType}}"></i> </label>
+					</div>
+				</span> <span ng-if="facilities.length > 0">
+					<div class="form-group">
+						<label for="chk_fac" style="display: block">Request Facilities</label> 
+						<div class="row" ng-repeat="x in facilities" >
+							<div class="col-xs-3"><label class="checkbox-inline">
+											<input type="checkbox" ng-model="x.selectedStatus" value="x.selectedStatus">{{x.fName}} 
+								 </label>
+							</div>
+							
+							<div class="col-xs-2" ng-if="x.selectedStatus && x.countable == '1'">
+							
+								<div>
+									<input class="form-control input-sm" type="text" ng-model="x.count" value="{{x.count}}" placeholder="Count" ng-required="x.selectedStatus" numbers-only/>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+
+				</span>
+				<div class="modal-footer">
+
+					<button type="button" class="btn btn-success  btn-sm"
+						data-dismiss="modal" ng-click="createObj(booking)" ng-disabled="book_form.$invalid">Book</button>
+
+					<button type="button" class="btn btn-danger  btn-sm" ng-click="closeObj(booking)"
+						data-dismiss="modal" >Close</button>
+				</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>
+</div>
+</div>

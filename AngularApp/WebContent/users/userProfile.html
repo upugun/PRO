@@ -1,0 +1,109 @@
+<div ng-show="notifyUser" class="alert alert-success alert-dismissable fade in">{{notifyUser}}</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+
+			<div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-3 col-lg-3 " align="left">
+							<!-- <img alt="User Pic"
+								src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
+								class="img-circle img-responsive"> -->
+
+						</div>
+
+
+
+
+						<div class=" col-md-9 col-lg-9 ">
+						<form name="form" ng-submit="updateObj(user)" role="form">
+							<table class="table table-user-information">
+								<tbody>
+									<tr>
+										<td>User ID:</td>
+										<td><input type="text" id="t_id"
+											class="form-control" ng-model="user.uid"
+											value="{{obj.uid}}" readonly=/></td>
+									</tr>
+									<tr>
+										<td>Name:</td>
+										<td><input type="text" id="t_name"
+											class="form-control" ng-model="user.uName"
+											value="{{obj.uName}}" placeholder="" /></td>
+									</tr>
+									<tr>
+										<td>Department:</td>
+										<td><input type="text"
+			id="t_emp_name" class="form-control" ng-model="user.uDep"
+			value="{{obj.uDep}}" placeholder="" /></td>
+									</tr>
+									<tr>
+										<td>Building:</td>
+										<td><input type="text"
+			id="t_emp_name" class="form-control" ng-model="user.uBuild"
+			value="{{obj.uBuild}}" placeholder="" /></td>
+									</tr>
+									<tr> 
+										<td>Floor:</td>
+										<td><input type="text" id="t_emp_name"
+											class="form-control" ng-model="user.uFloor"
+											value="{{obj.uFloor}}" placeholder="" numbers-only/></td>
+									</tr>
+
+
+
+									<tr>
+									<tr>
+										<td>Role:</td>
+										<td><input type="text" id="t_emp_name"
+											class="form-control" ng-model="user.role.roleName"
+											value="{{user.role.roleName}}"  readonly placeholder="" /></td>
+									</tr>
+									<tr>
+										<td>Email:</td>
+										<td><input type="text" id="t_emp_name"
+											class="form-control" ng-model="user.email"
+											value="{{obj.email}}" placeholder="" required=/></td>
+									</tr>
+									<td>Mobile No:</td>
+									<td><input type="text" id="t_emp_name"
+										class="form-control" ng-model="user.mobile"
+										value="{{obj.mobile}}" placeholder="" numbers-only/></td>
+									</tr>
+
+									<tr>
+										<td>Password:</td>
+										<td><input type="password" id="t_emp_name"
+											class="form-control" ng-model="user.login.password"
+											value="{{obj.login.password}}" placeholder="" /></td>
+									</tr>
+
+									<!-- tr>
+										<td>Confirm Password:</td>
+										<td><input type="text" id="t_emp_name"
+											class="form-control" ng-model="user.userN"
+											value="{{user.userN}}" placeholder="" /></td>
+									</tr-->
+
+									<tr>
+										<td>Description</td>
+										<td><textarea class="form-control" id="exampleTextarea"
+												rows="3" ng-model="user.details"
+												value="{{user.details}}" placeholder=""></textarea></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<button type="submit" class="btn btn-danger"
+							ng-disabled="form.$invalid">Update Profile</button>
+							</form>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+

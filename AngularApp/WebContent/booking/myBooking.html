@@ -1,0 +1,110 @@
+
+<div class="container-fluid">
+	<h1 class="text-center">My Bookings</h1>
+	<nav class="navbar navbar-default">
+		<div class="alert alert-default navbar-brand search-box">
+			<button class="btn btn-primary" ng-click="showAddForm();">
+				Add Booking <span class="glyphicon glyphicon-plus"
+					aria-hidden="true"></span>
+			</button>
+		</div>
+		<div class="alert alert-default input-group search-box">
+			<span class="input-group-btn"> <input type="text"
+				class="form-control" placeholder="Search Item" ng-model="searchText" />
+			</span>
+		</div>
+</div>
+</nav>
+
+
+
+
+
+<div class="col-md-6 col-md-offset-3">
+	<div ng-include src="'booking/add_booking.html'"></div>
+
+</div>
+
+<div class="clearfix"></div>
+<hr>
+<div ng-show="errorMsg" id="a_error"
+	class="alert alert-danger alert-dismissable fade in">
+	<a class="close" onclick="$('#a_error').hide();" aria-label="close">&times;</a>{{errorMsg}}
+</div>
+<div ng-show="successMsg" id="a_success"
+	class="alert alert-success alert-dismissable fade in">
+	<a class="close" onclick="$('#a_success').hide();" aria-label="close">&times;</a>{{successMsg}}
+</div>
+
+
+<div class="table-responsive">
+	<div class="form-group">
+		<label>Show Only : </label> <label class="radio-inline"> <input
+			type="radio" name="optradio" ng-model="statusBooking" value="PENDING"
+			ng-change="getBookingBycreatedByIds();" />Pending
+		</label> <label class="radio-inline"> <input type="radio"
+			name="optradio" ng-model="statusBooking" value="APPROVED"
+			ng-change="getBookingBycreatedByIds();"> Approved
+		</label> <label class="radio-inline"> <input type="radio"
+			name="optradio" ng-model="statusBooking" value="REJECTED"
+			ng-change="getBookingBycreatedByIds();"> Rejected
+		</label>
+	</div>
+	<hr>
+	<div class="clearfix"></div>
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Booking No</th>
+					<th>Meeting Room</th>
+					<th>Event Title</th>
+					<th>Start Time</th>
+					<th>End Time</th>
+					<th>Booking Status</th>
+					<td></td>
+					<td></td>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					ng-repeat="detail in booking | filter:searchText | startFrom:(currentPage - 1) * pageSize | limitTo:pageSize">
+					<td>{{detail.bid}}</td>
+					<td><span>{{detail.meetingRoom.mRoomName}}</span></td>
+					<td>{{detail.title}}</td>
+					<td>{{detail.start}}</td>
+					<td>{{detail.end}}</td>
+					<td>{{detail.bookingStatus}}</td>
+					<td>
+
+
+
+
+						<button class="btn btn-warning" ng-click="editObj(detail);"
+							title="Edit">
+							<span class="glyphicon glyphicon-edit"></span>
+						</button>
+
+					</td>
+
+
+					<td>
+						<button type="button" class="btn btn-danger" data-toggle="modal"
+							data-target="#myModal" title="Delete"
+							ng-click="prepareToDelete(detail);">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div ng-include src="'booking/delete_item.html'"></div>
+	</div>
+
+
+	<ul uib-pagination boundary-links="true" total-items="booking.length"
+		ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;"
+		next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+		items-per-page="pageSize" max-size="maxSize"></ul>
+</div>

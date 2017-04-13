@@ -1,0 +1,43 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="box-body no-padding">
+			<div class="mailbox-controls"></div>
+			<!-- /.pull-right -->
+		</div>
+		<hr>
+		<div class="row">
+		  <div class="col-xs-12 col-md-4">
+		  	<div class="table-responsive">
+			<table class="table table-hover">
+				<tbody>
+					<tr ng-repeat="detail in details" ng-click="showMessage(detail);">
+						<td><a><i class="fa fa-star {{getStartClass(detail);}}"></i></a></td>
+						<td><a href="#/user-details">{{detail.senderName}}</a> </td>
+						<td>{{detail.common.createdByTime}}</td>
+						<td><button ng-click="deleteItem(detail);"><span class="glyphicon glyphicon-trash"></span></button></td>
+					</tr>
+
+				</tbody>
+			</table>
+			<!-- /.table -->
+		</div>
+		  </div>
+		  <div class="col-xs-6 col-md-8">
+		  <textarea class="form-control" readonly id="exampleTextarea" rows="6"
+			ng-model="message" value="{{message}}"
+			placeholder=""></textarea></div>
+		</div>
+		
+		
+		<!-- /.mail-box-messages -->
+	</div>
+	<!-- /.box-body -->
+	<hr>
+	<div class="box-footer no-padding">
+		<div class="mailbox-controls">
+		
+		</div>
+	</div>
+</div>
+
+

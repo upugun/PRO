@@ -1,0 +1,46 @@
+[
+	{   "resourceId":"1",
+		"icon": "fa fa-wifi",
+		"resourceType": "Wifi",
+		"requestable": "true",
+		"status": "ACTIVE"
+	},
+	{	"resourceId":"2",
+		"icon": "fa fa-laptop",
+		"resourceType": "Laptop",
+		"requestable": "true",
+		"status": "ACTIVE"
+	},
+	{
+	    "resourceId":"3",
+		"icon": "fa fa-pencil-square-o",
+		"resourceType": "Whiteboard",
+		"requestable": "true",
+		"status": "ACTIVE"
+	},
+	{   
+	 	"resourceId":"4",
+		"icon": "fa fa-microphone",
+		"resourceType": "Microphone",
+		"requestable": "true",
+		"status": "ACTIVE"
+	},
+	{
+	
+		"resourceId":"5",
+		"icon": "fa fa-video-camera",
+		"resourceType": "Projector",
+		"requestable": "true",
+		"status": "ACTIVE"
+	},
+	{
+	
+		"resourceId":"6",
+		"icon": "fa fa-asterisk",
+		"resourceType": "AC",
+		"requestable": "false",
+		"status": "ACTIVE"
+	}
+	
+	
+]

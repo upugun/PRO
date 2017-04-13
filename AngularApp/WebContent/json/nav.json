@@ -1,0 +1,61 @@
+[
+   {
+   	  "id":1,
+      "optionText":"Calendar",
+      "optionLink":"",
+      "optionIcon":"fa fa-calendar",
+      "optionType" : "MAIN",
+      "parentId" : "",
+      "suboptions":[
+
+      ]
+   },
+   {
+      "optionText":"Booking",
+      "optionLink":"booking",
+      "optionIcon":"fa fa-book",
+      "suboptions":[
+
+      ]
+   },
+   {
+   	  "id":3,
+      "optionText":"Manage",
+      "optionLink":"#",
+      "optionIcon":"fa fa-fw fa-wrench",
+      "suboptions":[
+         {
+            "optionText":"Meeting Rooms",
+            "optionLink":"meeting-room"
+         },
+         {
+            "optionText":"Locations",
+            "optionLink":"location"
+         },
+         {
+            "optionText":"Users",
+            "optionLink":"users"
+         },
+         {
+            "optionText":"Facilities",
+            "optionLink":"facilities"
+         }
+      ]
+   },
+   {
+   	  "id":4,
+      "optionText":"Access",
+      "optionLink":"#",
+      "optionIcon":"fa fa-cog",
+      "suboptions":[
+         {
+            "optionText":"Role",
+            "optionLink":"role"
+         },
+         {
+            "optionText":"Permission",
+            "optionLink":"permission"
+         }
+      ]
+   }
+]

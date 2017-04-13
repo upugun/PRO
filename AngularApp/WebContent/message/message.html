@@ -1,0 +1,73 @@
+
+<form class="snf-form" id="empForm" name="empList"
+	ng-submit="create();" hidden>
+	<h3 class="text-center">Add New</h3>
+	<div class="form-group">
+
+		<input type="hidden" id="t_emp_id" class="form-control"
+			ng-model="obj.uid" value="{{obj.uid}}"
+			placeholder="ID" />
+
+	</div>
+	<div class="form-group">
+		<label for="t_name">Meeting Room Name</label> <input type="text"
+			id="t_name" class="form-control"
+			ng-model="obj.meetingRoomName"
+			value="{{obj.meetingRoomName}}"
+			placeholder="Meeting Room Name" />
+	</div>
+	<div class="form-group">
+		<label for="cmb_location">Location Name</label> <select
+			class="form-control" id="cmb_location">
+			<option>2nd Floor Building 2</option>
+			<option>2nd Floor Building 2</option>
+			<option>2nd Floor Building 2</option>
+			<option>2nd Floor Building 2</option>
+		</select>
+	</div>
+	
+	<div class="form-group">
+		<label for="t_emp_address">Seating Capacity</label> <input type="number"
+			class="form-control" ng-model="newListening.capacity"
+			value="{{newListening.capacity}}" placeholder="Capacity"
+			 />
+	</div>
+	
+	
+	<div class="form-group">
+						<label for=foo style="display: block"> Resources </label>
+						<div class="form-group" >
+							<label class="checkbox-inline" ng-repeat="resourceType in resourceTypes"><input type="checkbox"
+								value=""> <i class="{{resourceType.icon}}" aria-hidden="true"
+								title="{{resourceType.resourceType}}"></i> </label>
+								
+							
+								
+								</div>
+	
+	<div class="form-group">
+		<label for="t_owner">Administrator</label> <input type="text"
+			id="t_owner" class="form-control" ng-model="newListening.owner"
+			value="{{newListening.owner}}" placeholder="Name" />
+	</div>
+	<div class="form-group">
+		<label for="t_emp_address">Telephone Ext:</label> <input type="text"
+			class="form-control" ng-model="newListening.tp"
+			value="{{newListening.tp}}" placeholder="Extension"
+		 />
+	</div>
+	<div class="form-group">
+		<label for="t_emp_address">Notes</label>
+		<textarea class="form-control" id="exampleTextarea" rows="3"
+			ng-model="newListening.details" value="{{newListening.tp}}"
+			placeholder="Notes"></textarea>
+	</div>
+	
+	
+
+	<button class="btn btn-primary" ng-click="addNew(newListening)">
+		Save <span class="glyphicon glyphicon-floppy-disk"></span>
+	</button>
+
+
+</form>

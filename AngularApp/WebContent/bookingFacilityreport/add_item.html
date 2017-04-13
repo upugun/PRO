@@ -1,0 +1,63 @@
+<form class="snf-form" id="empForm" name="location" role="form"
+	ng-submit="createObj(obj)" hidden >
+	<h3 class="text-center">Add New</h3>
+	<div class="form-group">
+
+		<input type="hidden" id="lid" class="form-control"
+			ng-model="obj.lid" value="{{obj.lid}}"
+			placeholder="ID" />
+
+	</div>
+	<div class="form-group">
+		<label for="locationName">Location Name</label> <input type="text"
+			id="locationName" class="form-control"
+			ng-model="obj.locationName"
+			value="{{obj.locationName}}" placeholder="Location Name" required/>
+	</div>
+	
+	
+	
+	
+	<div class="form-group">
+		<label for="building">Building</label> <input type="text"
+			id="building" class="form-control"
+			ng-model="obj.building"
+			value="{{obj.building}}" placeholder="Building" required />
+	</div>
+	
+	<div class="form-group">
+		<label for="floor">Floor</label> <input type="text"
+			id="floor" class="form-control"
+			ng-model="obj.floor"
+			value="{{obj.floor}}" placeholder="Floor" required numbers-only />
+	</div>
+	
+	
+	
+	
+
+	<div class="form-group">
+		<label for="address">Address</label>
+		<textarea class="form-control" id="address" rows="4"
+			ng-model="obj.address" value="{{obj.address}}"
+			placeholder="Address"></textarea>
+	</div>
+	
+	<div class="form-group">
+			<label> Status</label> <br> <label class="radio-inline">
+				<input type="radio" name="optradio" ng-model="obj.common.status" value="ACTIVE">Active
+			</label> <label class="radio-inline"> <input type="radio"
+				name="optradio" ng-model="obj.common.status" value="INACTIVE"> Inactive
+			</label> 
+		</div>
+	
+	
+
+	<button class="btn btn-primary" >
+		Save <span class="glyphicon glyphicon-floppy-disk" ng-disabled="location.$invalid"></span>
+	</button>
+
+
+
+
+</form>

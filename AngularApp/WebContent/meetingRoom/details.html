@@ -1,0 +1,57 @@
+
+<div class="container-fluid">
+
+	<div class="row">
+
+		<div class="col-xs-12 col-sm-6 col-md-12">
+			<div class="row">
+				<div class="col-sm-4 col-md-3  ">
+					
+						<select name="type" class="form-control "  id="select"  ng-model="selectedRoom" ng-options="detail as detail.mRoomName for detail in details" ng-change="selectmeetingRoom(selectedRoom)">
+							<option value=''>- Please choose a meeting room -</option>
+						</select>
+					</div>
+				</div>
+				<br>
+				<div ng-if="selectedRoom">
+					<div>
+							<table>
+								<tr>
+									<td><i class="fa fa-map-marker" aria-hidden="true"></i> Location</td>
+									<td>: {{selectedRoom.location.locationName}}</td>
+								</tr>
+								<tr>
+									<td><i class="glyphicon glyphicon-user"></i> Administrator</td>
+									<td>: {{selectedRoom.admin.uName}}</td>
+								</tr>
+								<tr>
+									<td><i class="fa fa-users" aria-hidden="true"></i> Seating Capacity</td>
+									<td>: {{selectedRoom.seatingCapacity}}</td>
+								</tr>
+								<tr>
+									<td><i class="fa fa-phone" aria-hidden="true"></i> Ext</td>
+									<td>: {{selectedRoom.tp}}</td>
+								</tr>
+							</table>
+					</div>
+					<div class="row" style="float: right">
+
+						<div class="col-xs-12 col-sm-12 col-md-12 ">
+							Available Resources : <i ng-repeat="resourceType in resourceTypes" class="{{resourceType.icon}} {{resourceType.disabledColor}} snf-padding" title="{{resourceType.resourceType}}" aria-hidden="true" &nbsp ></i>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-12  ">
+						<div class="row nav">
+							<div class="col-md-12" style="margin: 0px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+

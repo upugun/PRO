@@ -1,0 +1,52 @@
+[
+
+
+
+		        		  {
+		        		  		"uid": 1,
+		        			  	"meetingRoomName": "First floor Dark room",
+		        			  	"details": "blb",
+		        			  	"location": "jetwing house 1",
+		        			  	"owner":"Gayumie",
+		        			  	"capacity":"5",
+		        			  	"phoneNo":"999"
+		        			  
+		        			  	
+		        		  },
+		        		   {
+		        		  		"uid": 1,
+		        			  	"meetingRoomName": "First floor Dark room",
+		        			  	"details": "blb",
+		        			  	"location": "jetwing house 2",
+		        			  	"owner":"Maheshi",
+		        			  	"capacity":"5",
+		        			  	"phoneNo":"999"
+		        			  
+		        			  	
+		        		  },
+			        		 {
+		        		  		"uid": 1,
+		        			  	"meetingRoomName": "First floor Dark room",
+		        			  	"details": "blb",
+		        			  	"location": "jetwing house 1",
+		        			  	"owner":"Lucy",
+		        			  	"capacity":"5",
+		        			  	"phoneNo":"999"
+		        			  
+		        			  	
+		        		  },
+			        		 
+			        		 {
+		        		  		"uid": 1,
+		        			  	"meetingRoomName": "First floor Dark room",
+		        			  	"details": "blb",
+		        			  	"location": "jetwing house 2",
+		        			  	"owner":"Zoe",
+		        			  	"capacity":"5",
+		        			  	"phoneNo":"999"
+		        			  
+		        			  	
+		        		  }
+			        		  
+
+		        		     ]

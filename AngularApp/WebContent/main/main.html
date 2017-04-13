@@ -1,0 +1,17 @@
+<div class="container-fluid">
+
+
+		<!--h1 class="text-center">Main Page</h1-->
+		<div class="row snf-form">
+					<div ng-include src="'meetingRoom/details.html'"></div>
+					<hr>
+					<div class="calendar" ng-model="eventSources" calendar="myCalendar" config="uiConfig.calendar" ui-calendar="uiConfig.calendar"></div>
+		</div>
+	<div ng-include src="'booking/booking_details.html'"></div>
+	<div ng-include src="'booking/book_now.html'"></div>
+	<div ng-include src="'success_model.html'"></div>
+	<div ng-include src="'failed_model.html'"></div>
+	<div ng-include src="'booking/warning_calendar.html'"></div>
+</div>
+
+

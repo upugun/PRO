@@ -1,0 +1,61 @@
+<div class="container wrapper">
+
+	<div class="col-xs-offset-2 col-xs-8 snf-form">
+		<h1 class="text-left">Register</h1>
+		<div ng-show="error" class="alert alert-danger">{{error}}</div>
+		<form name="login_form" ng-submit="registerUser(obj)" role="form">
+			<div class="form-group">
+				<label for="t_fullName">Full Name :</label> <input type="text"
+					id="t_fullName" name="t_fullName" class="form-control"
+					ng-model="obj.uName" required /> <span
+					ng-show="login_form.t_fullName.$dirty && login_form.t_fullName.$error.required"
+					class="help-block"><p class="text-danger">Full name is
+						required</p></span>
+			</div>
+			<div class="form-group">
+				<label for="t_mobile">Mobile :</label> <input type="text"
+					id="t_mobile" name="t_mobile" class="form-control"
+					ng-model="obj.mobile" numbers-only/> 
+			</div>
+			<div class="form-group">
+				<label for="t_username">Username :</label> <input type="text"
+					id="t_username" name="t_username" class="form-control"
+					ng-model="obj.login.userName" required /> <span
+					ng-show="login_form.t_username.$dirty && login_form.t_username.$error.required"
+					class="help-block"><p class="text-danger">Username is
+						required</p></span>
+			</div>
+			<div class="form-group">
+				<label for="t_email">Email :</label> <input type="email"
+					id="t_email" name="t_email" class="form-control"
+					ng-model="obj.email" required /> <span
+					ng-show="login_form.t_email.$dirty && login_form.t_email.$error.required"
+					class="help-block"><p class="text-danger">Email is
+						required</p></span>
+			</div>
+			<div class="form-group">
+				<label for="t_password">Password :</label> <input type="password"
+					id="t_password" name="t_password" class="form-control"
+					ng-model="obj.login.password" required /> <span
+					ng-show="login_form.t_password.$dirty && login_form.t_password.$error.required"
+					class="help-block"><p class="text-danger">Password is
+						required</p></span>
+			</div>
+			<div class="form-group">
+				<label for="t_cpassword">Confirm password :</label> <input
+					type="password" id="t_cpassword" name="t_cpassword"
+					class="form-control" ng-model="cpassword"
+					password-verify="obj.login.password" required /> <span
+					ng-show="login_form.t_cpassword.$error.passwordVerify && login_form.t_cpassword.$error.required"
+					class="help-block"><p class="text-danger">Password
+						doesn't match</p></span>
+			</div>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-danger"
+					ng-disabled="login_form.$invalid || login_form.t_cpassword.$error.passwordVerify">Register</button>
+				<button type="button" class="btn btn-default" ng-click="goTologin()">Login</button>
+			</div>
+		</form>
+	</div>
+
+</div>

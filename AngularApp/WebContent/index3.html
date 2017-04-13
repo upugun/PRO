@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="meetingApp">
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<title>Meeting Room Reservation</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" href="css/calendar/fullcalendar.css" />
+<link rel="stylesheet" href="users/css/profile.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse" ng-controller="navController"
+		ng-hide="hideMenus">
+
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#navbarCollapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#/">MRR App</a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="nav navbar-nav">
+					<li class="dropdown" ng-repeat="option in navBarOptions"
+						ng-model="option.hideOption"><a
+						ng-href="#/{{option.optionLink}}" class="dropdown-toggle"
+						data-toggle="dropdown" ng-if="option.optionLink!= '#'">{{option.optionText}}<b
+							class="caret" ng-if="hasSubMenu(option.suboptions)"></b></a> <a
+						class="dropdown-toggle" data-toggle="dropdown"
+						ng-if="option.optionLink== '#'">{{option.optionText}}<b
+							class="caret" ng-if="hasSubMenu(option.suboptions)"></b></a>
+						<ul class="dropdown-menu" ng-if="option.suboptions.length>0">
+							<li ng-repeat="suboption in option.suboptions"><a
+								href="#/{{suboption.optionLink}}">{{suboption.optionText}}</a></li>
+						</ul></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li ng-init="loggedInUser"><a href="#/user-profile"><span
+							class="glyphicon glyphicon-user"></span>Logged in as
+							{{globals.currentUser.username}}</a></li>
+					<li><a href="#here" ng-click="logout()"><span
+							class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div ng-view></div>
+
+
+
+
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular/ui-bootstrap-tpls-2.0.1.min.js"></script>
+	<script src="lib/jQuery/jquery.min.js"></script>
+	<script src="//code.angularjs.org/1.5.8/angular-route.min.js"></script>
+	<script src="//code.angularjs.org/1.5.8/angular-cookies.min.js"></script>
+	<script
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- Calendar libs -->
+	<script type="text/javascript" src="lib/calendar/moment.js"></script>
+	<script type="text/javascript" src="lib/calendar/calendar.js"></script>
+	<script type="text/javascript" src="lib/calendar/fullcalendar.js"></script>
+	<script type="text/javascript" src="lib/calendar/gcal.js"></script>
+
+	<!-- Application modules -->
+	<script src="js/app.js"></script>
+	<script src="meetingRoom/js/meetingRoomController.js"></script>
+	<script src="login/js/loginController.js"></script>
+	<script src="login/js/loginService.js"></script>
+	<script src="main/js/mainController.js"></script>
+	<script src="location/js/locationController.js"></script>
+	<script src="resources/js/resourcesController.js"></script>
+	<script src="booking/js/bookingController.js"></script>
+	<script src="users/js/usersController.js"></script>
+
+
+</body>
+
+</html>

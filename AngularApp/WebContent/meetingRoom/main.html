@@ -1,0 +1,114 @@
+
+<div class="container-fluid">
+	<h1 class="text-center">Meeting Room</h1>
+	<nav class="navbar navbar-default">
+		<div class="navbar-header">
+			<div class="alert alert-default navbar-brand search-box">
+				<button class="btn btn-primary" ng-click="showAddForm();">
+					Add Meeting Room <span class="glyphicon glyphicon-plus"
+						aria-hidden="true"></span>
+				</button>
+			</div>
+			<div class="alert alert-default input-group search-box">
+				<span class="input-group-btn"> <input type="text"
+					class="form-control" placeholder="Search Item"
+					ng-model="searchText" />
+				</span>
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="col-md-6 col-md-offset-3">
+		<div ng-include src="'meetingRoom/add_item.html'"></div>
+
+	</div>
+	<div class="clearfix"></div>
+	<hr>
+		<div ng-show="errorMsg" id="a_error"
+		class="alert alert-danger alert-dismissable fade in">
+		<a class="close" onclick="$('#a_error').hide();" aria-label="close">&times;</a>{{errorMsg}}
+	</div>
+	<div ng-show="successMsg" id="a_success"
+		class="alert alert-success alert-dismissable fade in">
+		<a class="close" onclick="$('#a_success').hide();" aria-label="close">&times;</a>{{successMsg}}
+	</div>
+	<div class="form-group">
+		<label>Show Only : </label> <label class="radio-inline"> <input
+			type="radio" name="optradio" ng-model="mRStatus" value="INACTIVE"
+			ng-change="getMeetingRoomByStatus();" /> Inactivate
+		</label> <label class="radio-inline"> <input type="radio"
+			name="optradio" ng-model="mRStatus" value="ACTIVE"
+			ng-change="getMeetingRoomByStatus();"> Activate
+		</label>
+	</div>
+	<hr>
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Meeting Room Id</th>
+					<th>Name</th>
+					<th>Location</th>
+					<th>Admin</th>
+					<th>Capacity</th>
+					<th>Pone ext.</th>
+					<th>Description</th>
+					<th>Approval</th>
+					<td></td>
+					<td></td>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					ng-repeat="detail in details | filter:searchText | startFrom:(currentPage - 1) * pageSize | limitTo:pageSize">
+					<td><span>{{detail.mId}}</span></td>
+					<td>{{detail.mRoomName}}</td>
+					<td>{{detail.location.locationName}}</td>
+					<td>{{detail.admin.uName}}</td>
+					<td>{{detail.seatingCapacity}}</td>
+					<td>{{detail.tp}}</td>
+					<td>{{detail.notes}}</td>
+					<td>{{detail.approval}}</td>
+					<td>
+						<button class="btn btn-warning" ng-click="editItem(detail)"
+							title="Edit">
+							<span class="glyphicon glyphicon-edit"></span>
+						</button>
+					</td>
+					<!-- 	 <td>
+						<button type="button" class="btn btn-danger" data-toggle="modal"
+							data-target="#myModal" title="Delete"
+							ng-click="prepareToDelete(detail);">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</td> -->
+					<td>
+						<button class="btn btn-success btn-sm"
+							ng-click="activateObj(detail)"
+							ng-disabled="detail.common.status !== 'INACTIVE'" title="Approve">
+							<span class="glyphicon glyphicon-ok"></span>
+						</button>
+					</td>
+
+					<td>
+						<button type="button" class="btn btn-danger"
+							ng-click="inactivateObj(detail)"
+							ng-disabled="detail.common.status !== 'ACTIVE'" title="Reject">
+							<span class="glyphicon glyphicon-remove"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div ng-include src="'meetingRoom/delete_item.html'"></div>
+	</div>
+
+
+	<ul uib-pagination boundary-links="true" total-items="details.length"
+		ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;"
+		next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+		items-per-page="pageSize" max-size="maxSize"></ul>
+</div>
+

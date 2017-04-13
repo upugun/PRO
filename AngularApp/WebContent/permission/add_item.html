@@ -1,0 +1,79 @@
+<form class="snf-form" id="empForm" name="permision"
+	ng-submit="createObj(obj);" hidden>
+	<h3 class="text-center">Add New</h3>
+	<div class="form-group">
+
+		<input type="hidden" id="oId" class="form-control" ng-model="obj.oId"
+			value="{{obj.oId}}" placeholder="ID" />
+
+	</div>
+	<div class="form-group">
+		<label for="locationName">Option Name</label> <input type="text"
+			id="locationName" class="form-control" ng-model="obj.optionName"
+			value="{{obj.optionName}}" placeholder="Option Name" required/>
+	</div>
+
+
+
+
+
+      <div class="form-group">
+		<label for="floor">Option Link</label> <input type="text" id="floor"
+			class="form-control" ng-model="obj.optionLink" value="{{obj.optionLink}}"
+			placeholder="Option Link" required/>
+	</div>
+
+	<div class="form-group">
+		<label>Option Type</label> <br> <label class="radio-inline">
+			<input id="Main" type="radio" name="content" ng-model="obj.optionType"
+			value="MAIN">Main
+		</label> <label class="radio-inline"> <input id="Sub" type="radio"
+			name="content" ng-model="obj.optionType" value="SUB">Sub
+		</label> <br>
+		<div class="form-group" ng-show="obj.optionType == 'SUB'">
+			<label for="cmb_location">Select Parent Menu</label> <select
+				name="cmb_options" class="form-control" id="cmb_location"
+				ng-model="obj.parentOption"
+				ng-options="mainOption as mainOption.optionName for mainOption in mainOptions track by mainOption.oId">
+			</select>
+		</div>
+	</div>
+
+
+
+	<div class="form-group">
+		<label for="floor">Option Icon</label> <input type="text" id="optionIcon"
+			class="form-control" ng-model="obj.optionIcon" value="{{obj.optionIcon}}"
+			placeholder="Icon code" />
+	</div>
+	
+		<div class="form-group">
+		<label for="floor">Option Position</label> <input type="number" id="optionOrder"
+			class="form-control" ng-model="obj.optionOrder" value="{{obj.optionOrder}}"
+			placeholder="Add position where to be displayed" required/>
+	</div>
+
+
+
+
+	<div class="form-group">
+	
+		<label> Status</label> <br> <label class="radio-inline">
+			<input type="radio" name="optradio" ng-model="obj.common.status"
+			value="ACTIVE">Active
+		</label> <label class="radio-inline"> <input type="radio"
+			name="optradio" ng-model="obj.common.status" value="INACTIVE">
+			Inactive
+		</label>
+	</div>
+
+
+
+	<button class="btn btn-primary" ng-disabled="permision.$invalid" >
+		Save <span class="glyphicon glyphicon-floppy-disk"></span>
+	</button>
+
+
+
+
+</form>

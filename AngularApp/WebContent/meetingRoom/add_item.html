@@ -1,0 +1,95 @@
+
+<form class="snf-form" id="empForm" name="meetingRoom" role="form"
+	ng-submit="create(obj);" hidden>
+	<h3 class="text-center">Add New</h3>
+	<div class="form-group">
+
+		<input type="hidden" id="t_emp_id" class="form-control"
+			ng-model="obj.bid" value="{{obj.mId}}" placeholder="ID" />
+
+	</div>
+	<div class="form-group">
+		<label for="t_name">Meeting Room Name</label> <input type="text"
+			id="t_name" class="form-control" ng-model="obj.mRoomName"
+			value="{{obj.mRoomName}}" placeholder="Meeting Room Name" required/>
+
+ <div class="form-group">
+		<label for="cmb_location">Location Name</label> 
+						<select  required class="form-control"  id="cmb_location"  ng-model="obj.location" ng-options="location as location.locationName for location in locations track by location.lid" required>
+						</select>
+						
+						
+	</div>
+	<div class="form-group">
+		<label for="t_emp_address">Seating Capacity</label> <input
+			type="text" class="form-control" ng-model="obj.seatingCapacity"
+			value="{{obj.seatingCapacity}}" placeholder="Capacity" min="0" required numbers-only/>
+	</div>
+
+
+	<div class="form-group">
+		<label for=foo style="display: block"> Resources </label>
+		<div class="form-group">
+			<label class="checkbox-inline"
+				ng-repeat="resourceType in resourceTypes"><input
+				type="checkbox" ng-model="resourceType.selectedStatus" value="resourceType.selectedStatus"> <i class="{{resourceType.icon}}"
+				aria-hidden="true" title="{{resourceType.resourceType}}"></i> </label>
+
+
+
+		</div>
+
+	<div class="form-group">
+		<label for="cmb_admin">Admin Name</label> 
+		<select name="cmb_admin" class="form-control"  id="cmb_admin"  ng-model="obj.admin" ng-selected="user.uid == 1" ng-options="user as user.uName for user in users track by user.uid" required>
+		</select>
+	</div>
+
+		<div class="form-group">
+			<label for="t_emp_address">Telephone Ext:</label> <input type="text"
+				class="form-control" ng-model="obj.tp" value="{{obj.tp}}"
+				placeholder="Extension" numbers-only />
+		</div>
+		
+		
+	
+		
+		
+		
+
+			<div class="form-group" >
+			<label> Request for Approval </label> <br> <label class="radio-inline">
+				<input type="radio" name="approval" ng-model="obj.approval"
+				 data-ng-value="true" >Enable
+			</label> <label class="radio-inline"> <input type="radio"
+				name="approval" ng-model="obj.approval"  data-ng-value="false">
+				Disable
+			</label>
+		</div>
+		 
+		
+		
+		
+		
+		<div class="form-group">
+			<label for="t_emp_address">Notes</label>
+			<textarea class="form-control" id="exampleTextarea" rows="3"
+				ng-model="obj.notes" value="{{obj.notes}}" placeholder="Notes"></textarea>
+		</div>
+
+		<div class="form-group" >
+			<label> Status</label> <br> <label class="radio-inline">
+				<input type="radio" name="optradio" ng-model="obj.common.status"
+				value="ACTIVE" >Active
+			</label> <label class="radio-inline"> <input type="radio"
+				name="optradio" ng-model="obj.common.status" value="INACTIVE">
+				Inactive
+			</label>
+		</div>
+
+
+
+		<button class="btn btn-primary" ng-disabled="meetingRoom.$invalid">
+			Save <span class="glyphicon glyphicon-floppy-disk"></span>
+		</button>
+</form>

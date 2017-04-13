@@ -1,0 +1,141 @@
+
+<form class="snf-form" id="empForm" name="empList"
+	ng-submit="addNew(newlistening);" hidden ">
+
+
+
+
+
+	<h3 class="text-center">Add New</h3>
+
+
+	<div class="form-group">
+		<label for="cmb_location">Meeting Room Name</label> <select
+			class="form-control" id="cmb_location">
+			<option>First floor Dark room</option>
+			<option>Second floor common room</option>
+			<option>Third floor conference R</option>
+			<option>First floor</option>
+		</select>
+	</div>
+
+
+
+
+	<div class="form-group">
+
+		<label for=foo style="display: block">Start Date</label> <input
+			type="date" id="t_emp_id" class="form-control"
+			ng-model="newListening.time" value="{{newListening.time}}"
+			placeholder="mm/dd/yyyy" />
+
+	</div>
+
+	<div class="form-group">
+		<label for="t_name">Meeting Title</label> <input type="text"
+			id="t_name" class="form-control" ng-model="newListening.locationName"
+			value="{{newListening.locationName}}" placeholder="Meeting Title" />
+	</div>
+
+
+
+	<div class="form-group">
+		<label for="t_name">Remarks</label>
+		<textarea class="form-control" id="exampleTextarea" rows="4"
+			ng-model="newListening.details" value="{{newListening.details}}"
+			placeholder="Remarks"></textarea>
+	</div>
+
+
+	<label>Select time</label>
+
+
+
+
+	<div class="form-inline">
+		<div class="form-group">
+
+
+			<label for="cmb_location">To</label> <select class="form-control"
+				id="cmb_location">
+				<option>08:00</option>
+				<option>09:00</option>
+				<option>10:00</option>
+				<option>11:00</option>
+			</select>
+		</div>
+		<label for="cmb_location">From</label> <select class="form-control"
+			id="cmb_location">
+			<option>08:30</option>
+			<option>09:30</option>
+			<option>10:30</option>
+			<option>11:30</option>
+		</select>
+	</div>
+	
+
+	<div class="form-group">
+		<label for="t_emp_name"></label>
+	</div>
+
+	<div class="form-group">
+		<label for=foo style="display: block">Available Resources </label>
+
+		<div class="form-group">
+			<i ng-repeat="resourceType in resourceTypes"
+				class="{{resourceType.icon}}" aria-hidden="true"
+				title="{{resourceType.resourceType}}"> &nbsp;&nbsp; </i> <label><font
+				size="2">AC</font></label>
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+	<div class="form-group">
+		<label for=foo style="display: block">Request Resources </label> <br>
+		<div class="form-group">
+			<label class="checkbox-inline"><input type="checkbox"
+				value=""> <i class="fa fa-wifi" aria-hidden="true"
+				title="Wi-fi"></i> </label>
+		</div>
+	</div>
+	
+	
+	
+	
+	<div class="form-group">
+		<label for=foo style="display: block">Request Facilities</label> <br>
+		<label class="checkbox-inline"><input type="checkbox" value="">Tea/Coffee</label>
+		<label class="checkbox-inline"><input type="checkbox" value="">IT
+			Asst.</label> <label class="checkbox-inline"><input type="checkbox"
+			value="">AC after 5:00pm</label> <b> </b>
+	</div>
+
+
+
+	<div class="form-group">
+		<label> Status</label> <br> <label class="radio-inline">
+			<input type="radio" name="optradio">Pending
+		</label> <label class="radio-inline"> <input type="radio"
+			name="optradio"> Approved
+		</label> <label class="radio-inline"> <input type="radio"
+			name="optradio">Rejected
+		</label>
+	</div>
+	<br>
+
+	<div class="form-group">
+		<button align="middle" class="btn btn-primary"
+			ng-click="addNew(newListening)">
+			Save <span class="glyphicon glyphicon-floppy-disk"></span>
+		</button>
+	</div>
+</form>

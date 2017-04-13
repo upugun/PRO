@@ -1,0 +1,59 @@
+<div id="eventModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<div class="modal-content">
+
+			<div class="modal-header bg-warning">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title text-center">{{bookingsAdded.title}}</h4>
+			</div>
+
+			<div class="modal-body">
+				<table class="table table-user-information">
+					<tbody>
+
+
+						<tr>
+							<td>Start Date:</td>
+							<td>{{bookingsAdded.start}}</td>
+						</tr>
+
+
+						<tr>
+							<td>End Date:</td>
+							<td>{{bookingsAdded.end}}</td>
+						</tr>
+
+						<tr>
+							<td>Booked by:</td>
+							<td>{{bookingsAdded.bookingUser.bUserName}}</td>
+						</tr>
+						<tr>
+
+							<td>Email:</td>
+							<td>{{bookingsAdded.bookingUser.bUserEmail}}</td>
+						</tr>
+
+
+						<tr>
+							<td>Phone Ext:</td>
+							<td>{{bookingsAdded.bookingUser.bUserMobile}}</td>
+						</tr>
+
+						<tr>
+							<td>Booked Time:</td>
+							<td>{{bookingsAdded.common.createdByTime}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="modal-footer">
+				<button type="button" class="btn btn-warning btn-sm" ng-if="currentUser.userId == bookingsAdded.common.createdById && bookingsAdded.start>currentdate" 
+						ng-click="editItem(bookingsAdded);">Edit</button>
+					<button type="button" class="btn btn-danger  btn-sm"
+						data-dismiss="modal">Close</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+<li class="message-preview" ng-repeat="newMessage in newMessages.response"><a>
+		<div class="media" ng-click="openMessage(newMessage);">
+			<span class="pull-left"> <img class="media-object"
+				src="http://placehold.it/50x50" alt="">
+			</span>
+			<div class="media-body">
+				<h5 class="media-heading">
+					<strong>{{newMessage.senderName}}</strong>
+				</h5>
+				<p class="small text-muted">
+					<i class="fa fa-clock-o"></i> {{newMessage.common.createdByTime}}
+				</p>
+				<p>{{newMessage.message| cut:true:100:' ...'}}</p>
+			</div>
+		</div>
+</a></li>
+<li class="message-footer"><a href="#/all-messages">Read All New
+						Messages</a></li>

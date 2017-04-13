@@ -1,0 +1,110 @@
+
+<div class="container-fluid">
+	<h1 class="text-center">Locations</h1>
+	<nav class="navbar navbar-default">
+		<div class="navbar-header">
+			<div class="alert alert-default navbar-brand search-box">
+				<button class="btn btn-primary" ng-click="showAddForm();">
+					Add Location <span class="glyphicon glyphicon-plus"
+						aria-hidden="true"></span>
+				</button>
+			</div>
+			<div class="alert alert-default input-group search-box">
+				<span class="input-group-btn"> <input type="text"
+					class="form-control" placeholder="Search Item"
+					ng-model="searchText" />
+				</span>
+			</div>
+		</div>
+	</nav>
+
+	
+	
+
+	<div class="col-md-6 col-md-offset-3">
+		<div ng-include src="'location/add_item.html'"></div>
+
+	</div>
+	<div class="clearfix"></div>
+	<hr>
+	<div ng-show="errorMsg" id="a_error" class="alert alert-danger alert-dismissable fade in"> <a class="close"  onclick="$('#a_error').hide();" aria-label="close">&times;</a>{{errorMsg}}</div>
+	<div ng-show="successMsg" id="a_success" class="alert alert-success alert-dismissable fade in"><a class="close" onclick="$('#a_success').hide();" aria-label="close">&times;</a>{{successMsg}}</div>
+	
+	<div class="table-responsive">
+	<div class="form-group">
+		<label>Show Only : </label> <label class="radio-inline"> <input
+			type="radio" name="optradio" ng-model="locationStatus" value="INACTIVE"
+			ng-change="getLocationByStatus();" /> Inactivate
+		</label> <label class="radio-inline"> <input type="radio"
+			name="optradio" ng-model="locationStatus" value="ACTIVE"
+			ng-change="getLocationByStatus();"> Activate
+		</label>
+	</div>
+	<hr>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Location Id</th>
+					<th>Location Name</th>
+					<th>Building</th>
+					<th>Floor</th>
+					<th>Address</th>
+					<th>Status</th>
+					
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					ng-repeat="detail in details | filter:searchText | startFrom:(currentPage - 1) * pageSize | limitTo:pageSize ">
+					<td><span>{{detail.lid}}</span></td>
+					<td>{{detail.locationName}}</td>
+					<td>{{detail.building}}</td>
+					<td>{{detail.floor}}</td>
+					<td>{{detail.address}}</td>
+					<td>{{detail.detail}}</td>
+					<td>{{detail.common.status}}</td>
+					<td>
+						<button class="btn btn-warning" ng-click="editObj(detail)"
+							title="Edit">
+							<span class="glyphicon glyphicon-edit"></span>
+						</button>
+					</td>
+					
+					
+						<td>
+						<button class="btn btn-success btn-sm" ng-click="activateObj(detail)" ng-disabled="detail.common.status !== 'INACTIVE'"
+							title="Approve">
+							<span class="glyphicon glyphicon-ok"></span>
+						</button>
+					</td>
+		
+					<td>
+						<button type="button" class="btn btn-danger"  ng-click="inactivateObj(detail)" ng-disabled="detail.common.status !== 'ACTIVE'" title="Reject">
+							<span class="glyphicon glyphicon-remove"></span>
+						</button>
+					</td>
+					
+					
+					
+					
+					<!-- <td>
+						<button type="button" class="btn btn-danger" data-toggle="modal"
+							data-target="#myModal" title="Delete"
+							ng-click="prepareToDelete(obj);">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</td> -->
+				</tr>
+			</tbody>
+		</table>
+		<div ng-include src="'meetingRoom/delete_item.html'"></div>
+	</div>
+
+
+	<ul uib-pagination boundary-links="true" total-items="details.length"
+		ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;"
+		next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+		items-per-page="pageSize" max-size="maxSize"></ul>
+</div>
+

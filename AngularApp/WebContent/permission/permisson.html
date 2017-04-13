@@ -1,0 +1,107 @@
+
+<div class="container-fluid">
+	<h1 class="text-center">Options</h1>
+	<nav class="navbar navbar-default">
+		<div class="navbar-header">
+			<div class="alert alert-default navbar-brand search-box">
+				<button class="btn btn-primary" ng-click="showAddForm();">
+					Add Option <span class="glyphicon glyphicon-plus"
+						aria-hidden="true"></span>
+				</button>
+			</div>
+			<div class="alert alert-default input-group search-box">
+				<span class="input-group-btn"> <input type="text"
+					class="form-control" placeholder="Search Item"
+					ng-model="searchText" />
+				</span>
+			</div>
+		</div>
+	</nav>
+
+
+	
+
+	<div class="col-md-6 col-md-offset-3">
+		<div ng-include src="'permission/add_item.html'"></div>
+
+	</div>
+	<div class="clearfix"></div>
+	<hr>
+	<div ng-show="errorMsg" id="a_error" class="alert alert-danger alert-dismissable fade in"> <a class="close"  onclick="$('#a_error').hide();" aria-label="close">&times;</a>{{errorMsg}}</div>
+	<div ng-show="successMsg" id="a_success" class="alert alert-success alert-dismissable fade in"><a class="close" onclick="$('#a_success').hide();" aria-label="close">&times;</a>{{successMsg}}</div>
+	
+	<div class="table-responsive">
+		<div class="form-group">
+		<label>Show Only : </label> <label class="radio-inline"> <input
+			type="radio" name="optradio" ng-model="permissionStatus" value="INACTIVE"
+			ng-change="getPermissionByStatus();" /> Inactivate
+		</label> <label class="radio-inline"> <input type="radio"
+			name="optradio" ng-model="permissionStatus" value="ACTIVE"
+			ng-change="getPermissionByStatus();"> Activate
+		</label>
+	</div>
+	<hr>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Option Name</th>
+					<th>Option Icon</th>
+					<th>Option Type</th>
+					<th>Option Link</th>
+					<th>Option Position</th>
+					<th>Status</th>
+
+
+				</tr>
+			</thead>
+			<tbody>
+				 	<tr
+					ng-repeat="detail in details | filter:searchText | startFrom:(currentPage - 1) * pageSize | limitTo:pageSize "> 
+				<td><span>{{detail.optionName}}</span></td>
+				<td>{{detail.optionIcon}}</td>
+				<td>{{detail.optionType}}</td>
+				<td>{{detail.optionLink}}</td>
+				<td>{{detail.optionOrder}}</td>
+				<td>{{detail.common.status}}</td>
+				<td>
+					<button class="btn btn-warning" ng-click="editObj(detail)"
+						title="Edit">
+						<span class="glyphicon glyphicon-edit"></span>
+					</button>
+				</td>
+				<!-- <td>
+					<button type="button" class="btn btn-danger" data-toggle="modal"
+						data-target="#myModal" title="Delete"
+						ng-click="prepareToDelete(obj);">
+						<span class="glyphicon glyphicon-trash"></span>
+					</button>
+				</td> -->
+				
+				<td>
+						<button class="btn btn-success btn-sm"
+							ng-click="activateObj(detail)"
+							ng-disabled="detail.common.status !== 'INACTIVE'" title="Approve">
+							<span class="glyphicon glyphicon-ok"></span>
+						</button>
+					</td>
+
+					<td>
+						<button type="button" class="btn btn-danger"
+							ng-click="inactivateObj(detail)"
+							ng-disabled="detail.common.status !== 'ACTIVE'" title="Reject">
+							<span class="glyphicon glyphicon-remove"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div ng-include src="'permission/delete_item.html'"></div>
+	</div>
+
+
+	<ul uib-pagination boundary-links="true" total-items="details.length"
+		ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;"
+		next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+		items-per-page="pageSize" max-size="maxSize"></ul>
+</div>
+

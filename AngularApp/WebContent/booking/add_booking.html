@@ -1,0 +1,126 @@
+
+<form class="snf-form" id="empForm" name="booking" role="form"
+	ng-submit="createObj(obj);" hidden>
+	<h3 class="text-center">Add New</h3>
+	<div class="form-group">
+
+
+		<input type="hidden" id="t_emp_id" class="form-control"
+			ng-model="obj.bid" value="{{obj.bid}}" placeholder="ID" />
+	</div>
+
+	<div class="form-group">
+		<label for="meetingRoom">Meeting Room Name</label> <select
+			name="meetingRoom" class="form-control " id="meetingRoom"
+			ng-model="obj.meetingRoom"
+			ng-options="detail as detail.mRoomName for detail in meetingrooms track by detail.mId"
+			ng-change="selectmeetingRoom(obj.meetingRoom)" required>
+		</select>
+	</div>
+
+
+	<div class="form-group">
+
+		<label for=foo style="display: block">Start Date</label> <input
+			type="date" id="startDate" class="form-control"
+			ng-model="obj.startDate" value="{{obj.startDate}}"
+			placeholder="mm/dd/yyyy" required />
+
+	</div>
+
+	<div class="form-group">
+
+		<label>Long Event </label> &nbsp<input type="checkbox"
+			id="Repeating_Event" name="Repeating_Event" ng-model="obj.repeating" />
+	</div>
+
+	<div class="form-group" ng-show="obj.repeating">
+		<label>End Date </label> <input type="date" id="endDate"
+			class="form-control" ng-model="obj.endDate" value="{{obj.endDate}}"
+			placeholder="mm/dd/yyyy" />
+
+
+	</div>
+
+
+	<div class="form-group">
+		<label for="t_name">Meeting Title</label> <input type="text"
+			id="title" class="form-control" ng-model="obj.title"
+			value="{{obj.title}}" placeholder="Meeting Title" required />
+	</div>
+
+	<div class="form-group">
+		<label for="t_name">Remarks</label>
+		<textarea class="form-control" id="exampleTextarea" rows="4"
+			ng-model="obj.remarks" value="{{obj.remarks}}" placeholder="Remarks"></textarea>
+	</div>
+
+
+	<label>Select time</label>
+
+	<div class="form-inline">
+		<div class="form-group">
+
+
+			<label for="cmb_start">From</label> <select class="form-control"
+				name="cmb_times" class="form-times " id="cmb_times"
+				ng-model="obj.startTime"
+				ng-options="detail as detail for detail in timeSlots" required>
+			</select>
+		</div>
+
+
+		<label for="cmb_start">To</label> <select class="form-control"
+			name="cmb_times" class="form-times " id="cmb_times"
+			ng-model="obj.endTime"
+			ng-options="detail as detail for detail in timeSlots" required>
+		</select>
+	</div>
+
+
+	<div class="form-group">
+		<label for="t_emp_name"></label>
+	</div>
+	<span ng-if="availableList.length > 0">
+		<div class="form-group">
+			<label for=foo style="display: block">Available Resources </label>
+
+			<div class="form-group">
+				<i ng-repeat="resourceType in availableList"
+					class="{{resourceType.icon}} snf-padding" aria-hidden="true"
+					title="{{resourceType.resourceType}}"></i>
+			</div>
+		</div>
+	</span> <span ng-if="requestList.length > 0">
+		<div class="form-group">
+			<label for=foo style="display: block">Request Resources </label> <label
+				class="checkbox-inline" ng-repeat="reqObj in requestList"><input
+				type="checkbox" ng-model="reqObj.selectedStatus"
+				value="reqObj.selectedStatus"> <i class="{{reqObj.icon}}"
+				aria-hidden="true" title="{{reqObj.resourceType}}"></i> </label>
+		</div>
+	</span> <span ng-if="facilities.length > 0">
+		<div class="form-group">
+			<label for="chk_fac" style="display: block">Request
+				Facilities</label>
+			<div class="row" ng-repeat="x in facilities">
+				<div class="col-xs-3">
+					<label class="checkbox-inline"> <input type="checkbox"
+						ng-model="x.selectedStatus" value="x.selectedStatus">{{x.fName}}
+					</label>
+				</div>
+			<div class="col-xs-2" ng-if="x.selectedStatus && x.countable == '1'">
+					<div>
+						<input class="form-control input-sm" type="text"
+							ng-model="x.count" value="{{x.count}}" placeholder="Count" numbers-only/>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</span>
+
+	<button class="btn btn-primary" ng-disabled="booking.$invalid">
+		Save <span class="glyphicon glyphicon-floppy-disk"></span>
+	</button>
+</form>

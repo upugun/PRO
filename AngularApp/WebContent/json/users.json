@@ -1,0 +1,45 @@
+ [
+
+				{
+					"uid" : "135049b",
+					"uName" : "Maheashi",
+					"uDep" : "IT",
+					"uBuild":1,
+					"uRoll" : "intern",
+					"userN" : "maheshi@jetwinghotels.com",
+					"details":"kiqvdjkdvkvk"
+
+				}, {
+					"uid" : "135049b",
+					"uName" : "Maheashi",
+					"uDep" : 1,
+					"uBuild":1,
+					"uFloor":1,
+					"uRoll" : "intern",
+					"userN" : "maheshi@jetwinghotels.com",
+					"details":"kiqvdjkdvkvk"
+				},
+
+				{
+					"uid" : "135049b",
+					"uName" : "Maheashi",
+					"uDep" : 1,
+					"uBuild":1,
+					"uFloor":1,
+					"uRoll" : "intern",
+					"userN" : "maheshi@jetwinghotels.com",
+					"details":"kiqvdjkdvkvk"
+				},
+
+				{
+					"uid" : "135049b",
+					"uName" : "Maheashi",
+					"uDep" : 1,
+					"uBuild":1,
+					"uFloor":1,
+					"uRoll" : "intern",
+					"userN" : "maheshi@jetwinghotels.com",
+					"details":"kiqvdjkdvkvk"
+				}
+
+				]

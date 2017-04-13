@@ -1,0 +1,64 @@
+
+<div class="container-fluid">
+	<h1 class="text-center">Permission Access</h1>
+	<!-- <nav class="navbar navbar-default">
+		<div class="navbar-header">
+			<div class="alert alert-default navbar-brand search-box">
+				<button class="btn btn-primary" ng-click="showAddForm();">
+					Add Role <span class="glyphicon glyphicon-plus"
+						aria-hidden="true"></span>
+				</button>
+			</div>
+			<div class="alert alert-default input-group search-box">
+				<span class="input-group-btn"> 
+				</span>
+			</div>
+		</div>
+	</nav>-->
+
+<div ng-show="errorMsg" id="a_error" class="alert alert-danger alert-dismissable fade in"> <a class="close"  onclick="$('#a_error').hide();" aria-label="close">&times;</a>{{errorMsg}}</div>
+	<div ng-show="successMsg" id="a_success" class="alert alert-success alert-dismissable fade in"><a class="close" onclick="$('#a_success').hide();" aria-label="close">&times;</a>{{successMsg}}</div>
+	
+
+
+
+	<div class="col-md-6 col-md-offset-3">
+		<div ng-include src="'role/add_item.html'"></div>
+
+	</div>
+	<div class="clearfix"></div>
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th></th>
+					<th ng-repeat="detail in roles">
+						{{detail.roleName}}
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="permission in permissions">
+					<td>
+						<ul class="snf-unorder-list">
+							<li>{{permission.optionName}}</li>
+							<ul class="snf-unorder-list" ng-repeat="subOption in permission.suboptions">
+								<li>{{subOption.optionName}}</li>
+							</ul>
+						</ul>
+					</td>
+					<td ng-repeat="detail in roles">
+						<ul class="snf-unorder-list">
+							<li>
+								<input type="checkbox" ng-model="permissionMatixObj.selectedStatus" ng-checked="isPermissionAllocated(permission.oId, detail.roleId);" ng-click="setPermission(permission.oId, detail.roleId, permissionMatixObj.selectedStatus);"/></li>
+							<li ng-repeat="subOption in permission.suboptions">
+								<input type="checkbox" ng-model="subpermissionMatixObj.selectedStatus" ng-checked="isPermissionAllocated(subOption.oId, detail.roleId);" ng-click="setPermission(subOption.oId, detail.roleId, subpermissionMatixObj.selectedStatus);"/></li>
+						</ul>
+					</td>
+				</tr>
+			</tbody>		
+		</table>
+	</div>
+
+</div>
+

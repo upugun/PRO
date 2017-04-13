@@ -1,0 +1,89 @@
+<form class="snf-form" id="empForm" name="users"
+	ng-submit="createObj(obj);" hidden>
+	<h3 class="text-center">Add New User</h3>
+	<div class="form-group">
+
+		<input type="hidden" id="t_emp_id" class="form-control"
+			ng-model="obj.uid" value="{{obj.uid}}"
+			placeholder="ID" />
+
+	</div>
+	<div class="form-group">
+		<label for="t_name">Full Name</label> <input type="text"
+			id="uName" class="form-control" ng-model="obj.uName"
+			value="{{obj.uName}}" placeholder="Employee Name" required/>
+	</div>
+
+	<div class="form-group">
+		<label for="t_emp_name">Department</label> <input type="text"
+			id="uDep" class="form-control" ng-model="obj.uDep"
+			value="{{obj.uDep}}" placeholder="Department" />
+	</div>
+	
+	<div class="form-group">
+		<label for="t_emp_name">Building</label> <input type="text"
+			id="uBuild" class="form-control" ng-model="obj.uBuild"
+			value="{{obj.uBuild}}" placeholder="Building" />
+		</div>
+		
+		<div class="form-group">
+		<label for="t_emp_name">Floor</label> <input type="text"
+			id="uFloor" class="form-control" ng-model="obj.uFloor"
+			value="{{obj.uFloor}}" placeholder="Floor" numbers-only/>
+	</div>
+	
+	<div class="form-group">
+		<label for="t_emp_name">Email Address</label> <input type="email" 
+			id="userN" class="form-control" ng-model="obj.email" 
+			value="{{obj.email}}" placeholder="Jetwing Email Address"required />
+	</div>
+
+
+	<div class="form-group">
+		<label for="t_emp_name">Mobile</label> <input type="text"
+			id="userN" class="form-control" ng-model="obj.mobile"
+			value="{{obj.mobile}}" placeholder="Mobile" numbers-only/>
+	</div>
+	
+
+	<div class="form-group">
+		<label for="cmb_location">Role</label> 
+						<select name="cmb_role" class="form-control"  id="cmb_role"  ng-model="obj.role" ng-options="role as role.roleName for role in roles track by role.roleId" required>
+						</select>
+<!-- <div class="form-group">
+		<label for="t_emp_name">Roll</label> <input type="text"
+			id="userN" class="form-control" ng-model="obj.uRoll"
+			value="{{obj.uRoll}}" placeholder="" />
+	</div> -->
+
+	<div class="form-group">
+		<label for="t_emp_name">User Name</label> <input type="text"
+			id="userN" class="form-control" ng-model="obj.login.userName"
+			value="{{obj.login.userName}}" placeholder="" required/>
+	</div>
+	<div class="form-group">
+		<label for="t_name">Password</label> <input type="password" id="pw"
+			class="form-control" ng-model="obj.login.password"
+			value="{{obj.login.password}}" placeholder="" required/>
+	</div>
+
+	<!-- div class="form-group">
+		<label for="t_name">Confirm Password</label> <input type="text"
+			id="pwC" class="form-control" ng-model="obj.login.password"
+			value="{{obj.login.password}}" placeholder="" />
+	</div-->
+
+
+	<div class="form-group">
+		<label for="t_emp_address">Description</label>
+		<textarea class="form-control" id="details" rows="3"
+			ng-model="obj.details" value="{{obj.details}}"
+			placeholder="Description"></textarea>
+	</div>
+
+	<button class="btn btn-primary" ng-disabled="users.$invalid">
+		Save <span class="glyphicon glyphicon-floppy-disk"></span>
+	</button>
+
+
+</form>

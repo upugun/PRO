@@ -1,0 +1,126 @@
+
+<div class="container-fluid">
+	<h1 class="text-center">Facility Report</h1>
+	
+
+	
+	
+
+	
+
+	</div>
+	<div class="clearfix"></div>
+	<hr>
+	<div ng-show="errorMsg" id="a_error" class="alert alert-danger alert-dismissable fade in"> <a class="close"  onclick="$('#a_error').hide();" aria-label="close">&times;</a>{{errorMsg}}</div>
+	<div ng-show="successMsg" id="a_success" class="alert alert-success alert-dismissable fade in"><a class="close" onclick="$('#a_success').hide();" aria-label="close">&times;</a>{{successMsg}}</div>
+	
+	<div class="table-responsive">
+	<div class="form-inline">
+		<label>Filter By: </label>
+
+
+			<input type="text" id="d_startDate" 
+						name="d_startDate" class="form-control"
+						ng-model="booking.startDate" value="{{booking.startDate}}"
+						placeholder="Start Date"  onfocus="(this.type='date')"/>
+						
+		
+		
+		 <input type="text" id="d_startDate"
+						name="d_startDate" class="form-control"
+						ng-model="booking.endDate" value="{{booking.startDate}}"
+						placeholder="End Date" onfocus="(this.type='date')"/>
+						
+					<div class="form-group">
+		<label for="cmb_location"></label> 
+						<select  required class="form-control"  id="cmb_location"  ng-model="facilities.fName" ng-options="facilities as facilities.fName for facilities in facilities track by facilities.fid" required>
+						<option value=""disabled selected class="" selected="selected">- Facility Type-</option>
+						
+						</select>
+						
+						
+						
+						
+						 
+						<button type="button" class="btn btn-primary">
+      <span class="glyphicon glyphicon-search"></span> Search
+    </button>
+    
+		<button type="button" class="btn btn-warning">
+      <span class="glyphicon glyphicon-print"></span> Print
+    </button>
+		
+		
+		
+	</div>
+	
+	
+	</div>
+	<hr>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Booking Number</th>
+					<th>Start Time</th>
+					<th>End Time</th>
+					<th>Facility Type</th>
+					<th>Count</th>
+					<th>Booked By</th>
+					<th>Phone Ext</th>
+					<th>Email</th>
+					
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					ng-repeat="detail in details | filter:searchText | startFrom:(currentPage - 1) * pageSize | limitTo:pageSize ">
+					<td><span>{{detail.bookingNo}}</span></td>
+					<td>{{detail.sTime}}</td>
+					<td>{{detail.eTime}}</td>
+					<td>{{detail.fType}}</td>
+					<td>{{detail.fCount}}</td>
+					<td>{{detail.bookedBy}}</td>
+					<td>{{detail.ext}}</td>
+					<td>{{detail.email}}</td>
+					<td>
+						<button class="btn btn-warning" ng-click="editObj(detail)"
+							title="Edit">
+							<span class="glyphicon glyphicon-edit"></span>
+						</button>
+					</td>
+					
+					
+						<td>
+						<button class="btn btn-success btn-sm" ng-click="activateObj(detail)" ng-disabled="detail.common.status !== 'INACTIVE'"
+							title="Edit">
+							<span class="glyphicon glyphicon-ok"></span>
+						</button>
+					</td>
+		
+					<td>
+						<button type="button" class="btn btn-danger"  ng-click="inactivateObj(detail)" ng-disabled="detail.common.status !== 'ACTIVE'">
+							<span class="glyphicon glyphicon-remove"></span>
+						</button>
+					</td>
+					
+					
+					
+					
+					<!-- <td>
+						<button type="button" class="btn btn-danger" data-toggle="modal"
+							data-target="#myModal" title="Delete"
+							ng-click="prepareToDelete(obj);">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</td> -->
+				</tr>
+			</tbody>
+		</table>
+		<div ng-include src="'meetingRoom/delete_item.html'"></div>
+	</div>
+
+
+	
+</div>
+
